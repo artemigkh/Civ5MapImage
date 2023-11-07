@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"image/color"
 	"math"
+	"strconv"
 	"strings"
 
 	"github.com/fogleman/gg"
@@ -420,7 +421,27 @@ func drawCityNames(dc *gg.Context, mapData *fileio.Civ5MapData, mapHeight int, m
 	}
 }
 
-func drawPoliticalMap(mapData *fileio.Civ5MapData, outputFilename string) {
+func drawGameMetadata(dc *gg.Context, mapHeight int, mapWidth int, turn int, gameId, winType, winCiv string) {
+	if turn < 0 {
+		return
+	}
+
+	dc.SetRGB255(255, 255, 255)
+
+	x, y := getImagePosition(0, mapWidth-1)
+	dc.DrawString(strconv.Itoa(turn), x-radius*3/4, y+radius*3/4)
+
+	x, y = getImagePosition(0, 0)
+	dc.DrawString(gameId, x-radius*3/4, y+radius*3/4)
+
+	x, y = getImagePosition(0, 8)
+	dc.DrawString(winCiv, x-radius*3/4, y+radius*3/4)
+
+	x, y = getImagePosition(0, 12)
+	dc.DrawString(winType, x-radius*3/4, y+radius*3/4)
+}
+
+func drawPoliticalMap(mapData *fileio.Civ5MapData, outputFilename string, turn int, gameId, winType, winCiv string) {
 	mapHeight := len(mapData.MapTiles)
 	mapWidth := len(mapData.MapTiles[0])
 
@@ -439,6 +460,7 @@ func drawPoliticalMap(mapData *fileio.Civ5MapData, outputFilename string) {
 	dc.InvertY()
 	// Draw city names on top of hexes
 	drawCityNames(dc, mapData, mapHeight, mapWidth)
+	drawGameMetadata(dc, mapHeight, mapWidth, turn, gameId, winType, winCiv)
 
 	dc.SavePNG(outputFilename)
 	fmt.Println("Saved image to", outputFilename)

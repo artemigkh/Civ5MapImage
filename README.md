@@ -1,4 +1,12 @@
-# Civ5MapImage
+# Civ5MapImage - VP Video Replay Fork
+Fork for creating video replays of Vox Populi (https://forums.civfanatics.com/forums/community-patch-project.497/)
+autoplay games. 
+
+Meant to be used with https://github.com/artemigkh/civ5-automation and requires community patch
+DLL >= v4.3 with `LOG_MAP_STATE` mod options.
+
+This is a bit of a hack and slash job; relevant scripts are included for post-processing 
+turn files, stitching video, pulling colors out of the civ5 db, etc. in the `scripts` directory.
 
 ## Table of Contents
 

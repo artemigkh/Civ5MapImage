@@ -13,15 +13,27 @@ func main() {
 	inputPtr := flag.String("input", "", "Input filename")
 	outputPtr := flag.String("output", "output.png", "Output filename")
 	modePtr := flag.String("mode", "physical", "Drawing mode")
+	turnPtr := flag.Int("turn", -1, "Game Turn")
+	gameIdPtr := flag.String("gameId", "", "Game ID")
+	winTypePtr := flag.String("winType", "", "Win Type")
+	winCivPtr := flag.String("winCiv", "", "Win Civ")
 
 	flag.Parse()
 
 	inputFilename := *inputPtr
 	outputFilename := *outputPtr
 	mode := *modePtr
+	turn := *turnPtr
+	gameId := *gameIdPtr
+	winType := *winTypePtr
+	winCiv := *winCivPtr
 	fmt.Println("Input filename: ", inputFilename)
 	fmt.Println("Output filename: ", outputFilename)
 	fmt.Println("Mode: ", mode)
+	fmt.Println("Turn: ", turn)
+	fmt.Println("gameId: ", gameId)
+	fmt.Println("winType: ", winType)
+	fmt.Println("winCiv: ", winCiv)
 
 	inputFileExtension := filepath.Ext(inputFilename)
 	outputFileExtension := filepath.Ext(outputFilename)
@@ -49,7 +61,7 @@ func main() {
 	if mode == "physical" {
 		drawPhysicalMap(mapData, outputFilename)
 	} else if mode == "political" {
-		drawPoliticalMap(mapData, outputFilename)
+		drawPoliticalMap(mapData, outputFilename, turn, gameId, winType, winCiv)
 	} else {
 		log.Fatal("Invalid drawing mode: " + mode + ". Mode must be in this list [phyiscal, political].")
 	}
