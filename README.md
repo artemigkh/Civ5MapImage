@@ -4,7 +4,11 @@ autoplay games.
 
 Example:
 
-https://github.com/artemigkh/Civ5MapImage/assets/8049171/fd445f63-e963-4d67-8865-4b8a2c714e79
+
+
+https://github.com/artemigkh/Civ5MapImage/assets/8049171/16175e2d-48ae-4277-8df5-456fe6c68ee1
+
+
 
 Meant to be used with https://github.com/artemigkh/civ5-automation and requires community patch
 DLL >= v4.3 with `LOG_MAP_STATE` mod options.
