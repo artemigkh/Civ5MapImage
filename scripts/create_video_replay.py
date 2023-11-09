@@ -86,7 +86,6 @@ def render_turn_frame(turn, injson, outpng, game_id, win_civ, win_type):
         f'-winType={win_type}'
     ])
 
-
 def stitch_turn_maps_into_video(out_dir, fps, game_id):
     subprocess.run([
         str(ffmpegExecutable), '-y',
@@ -95,7 +94,9 @@ def stitch_turn_maps_into_video(out_dir, fps, game_id):
         '-c:v', 'libx264',
         '-r', '24',
         '-crf', '30',
-        '-vf', 'tpad=stop_mode=clone:stop_duration=3',
+        '-vf', 'tpad=stop_mode=clone:stop_duration=3,scale=2*trunc(iw/2):-2,setsar=1',
+        '-profile:v', 'main',
+        '-pix_fmt', 'yuv420p',
         str(out_dir / f'{game_id}.mp4')
     ])
 
