@@ -2,6 +2,14 @@
 Fork for creating video replays of Vox Populi (https://forums.civfanatics.com/forums/community-patch-project.497/)
 autoplay games. 
 
+Example:
+
+
+
+https://github.com/artemigkh/Civ5MapImage/assets/8049171/16175e2d-48ae-4277-8df5-456fe6c68ee1
+
+
+
 Meant to be used with https://github.com/artemigkh/civ5-automation and requires community patch
 DLL >= v4.3 with `LOG_MAP_STATE` mod options.
 
